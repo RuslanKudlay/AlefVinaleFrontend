@@ -1,0 +1,40 @@
+<div class="content">
+    <div class="content-body">
+        <button (click)="addProduct()" class="btn btn-primary">Add</button>
+        <input [(ngModel)]="product.meaning" placeholder="Enter meaning"/>
+        <input [(ngModel)]="product.name" placeholder="Enter name"/>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Meaning</td>
+                    <td>Name</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let m of model">
+        
+                        <td>{{m.id}}</td>
+                        <td *ngIf="!isEdit">{{m.meaning}}</td>
+                        <td *ngIf="isEdit">
+                            <input [(ngModel)]="m.meaning" placeholder={{m.meaning}}/>
+                        </td>
+                        <td *ngIf="!isEdit">{{m.name}}</td>
+                        <td *ngIf="isEdit">
+                            <input [(ngModel)]="m.name" placeholder={{m.name}}/>
+                        </td>
+                        <td *ngIf="!isEdit">
+                            <button (click)="showEditPanel()" style="margin-right: 2px;" class="btn btn-info">Edit</button>
+                        </td>
+                        <td *ngIf="isEdit">
+                            <button (click)="saveEditProduct(m)" style="margin-right: 2px;" class="btn btn-success">Save</button>
+                        </td>
+                        <td *ngIf="isEdit">
+                            <button (click)="hideEditPanel()" style="margin-right: 2px;" class="btn btn-danger">Cancel</button>
+                        </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
